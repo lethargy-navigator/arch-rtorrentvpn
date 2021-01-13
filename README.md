@@ -12,12 +12,12 @@ This Docker focuses on rTorrent-ps and the pyrocore utilities. I prefer to handl
 Rtorrent is accessed via a socket file located at /scgi/.scgi_local
 
 You can create a crontab file located at /rtbase/crontab and it will be consumed at runtime. With this you can schedule execution of pyrocore utilities to manage torrents such as:  
-/home/nobody/bin/rtcontrol message='*Unregistered*torrent*' --yes --cron --cull  
-/home/nobody/bin/rtcontrol custom_1=radarr completed=+365d --yes --cron --cull
+`/home/nobody/bin/rtcontrol message='*Unregistered*torrent*' --yes --cron --cull`  
+`/home/nobody/bin/rtcontrol custom_1=radarr completed=+365d --yes --cron --cull`
 
 **Usage via docker-compose**
 
-```
+`
 services:
   rtorrent:
     image: lethargynavigator/arch-rtorrentps:latest
@@ -31,4 +31,4 @@ services:
       - PGID=1005
       - TZ=America/New_York
     restart: unless-stopped
-```
+`
