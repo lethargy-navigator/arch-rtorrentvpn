@@ -17,7 +17,7 @@ You can create a crontab file located at /rtbase/crontab and it will be consumed
 
 **Usage via docker-compose**
 
-`
+```
 services:
   rtorrent:
     image: lethargynavigator/arch-rtorrentps:latest
@@ -31,4 +31,4 @@ services:
       - PGID=1005
       - TZ=America/New_York
     restart: unless-stopped
-`
+```
