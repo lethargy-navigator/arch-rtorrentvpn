@@ -1,5 +1,6 @@
-FROM binhex/arch-int-vpn:latest
-MAINTAINER binhex
+FROM binhex/arch-base:latest
+
+MAINTAINER lethargy-navigator
 
 # additional files
 ##################
@@ -11,13 +12,12 @@ ADD build/*.conf /etc/supervisor/conf.d/
 ADD build/root/*.sh /root/
 
 # add run bash scripts
-ADD run/root/*.sh /root/
-
-# add run bash scripts
 ADD run/nobody/*.sh /home/nobody/
 
-# add pre-configured config files for nobody
+# add pre-configured config files for rtorrent
 ADD config/nobody/ /home/nobody/
+
+#ADD config/nobody/crontab /var/spool/cron/nobody
 
 # install app
 #############
@@ -32,29 +32,17 @@ RUN chmod +x /root/*.sh /home/nobody/*.sh && \
 # add pyrocore symlinks to path - symlinks from /opt/pyrocore to /home/nobody/bin
 ENV PATH="${PATH}:/home/nobody/bin"
 
+# map /rtbase to rtorrent-ps base path
+VOLUME /rtbase
+
 # map /config to host defined config path (used to store configuration from app)
 VOLUME /config
 
-# map /data to host defined data path (used to store data from app)
-VOLUME /data
+# map /downloads to torrent downloads base path
+VOLUME /downloads
 
-# expose port for scgi
-EXPOSE 5000
-
-# expose port for rutorrent http
-EXPOSE 9080
-
-# expose port for rutorrent https
-EXPOSE 9443
-
-# expose port for privoxy
-EXPOSE 8118
-
-# expose port for incoming connections (used only if vpn disabled)
-EXPOSE 49160
-
-# expose port for dht udp (used only if vpn disabled)
-EXPOSE 49170
+# map /scgi to path containing scgi file
+VOLUME /scgi
 
 # set permissions
 #################
