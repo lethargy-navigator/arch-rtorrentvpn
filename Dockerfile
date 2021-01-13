@@ -1,6 +1,6 @@
 FROM binhex/arch-base:latest
 
-MAINTAINER lethargy-navigator
+MAINTAINER lethargynavigator
 
 # additional files
 ##################
