@@ -1,8 +1,8 @@
 **Forked from https://github.com/binhex/arch-rtorrentvpn - Thanks to binhex for all the excellent work.**
 
-**Application**
+**Applications**
 
-[rTorrent-ps](https://github.com/pyroscope/rtorrent-ps)
+[rTorrent-ps](https://github.com/pyroscope/rtorrent-ps)  
 [pyrocore](https://github.com/pyroscope/pyrocore)
 
 **Description**
@@ -11,8 +11,8 @@ This Docker focuses on rTorrent-ps and the pyrocore utilities. I prefer to handl
 
 Rtorrent is accessed via a socket file located at /scgi/.scgi_local
 
-You can create a crontab file located at /rtbase/crontab and it will be consumed at runtime. With this you can schedule execution of pyrocore utilities to manage torrents such as:
-/home/nobody/bin/rtcontrol message='*Unregistered*torrent*' --yes --cron --cull
+You can create a crontab file located at /rtbase/crontab and it will be consumed at runtime. With this you can schedule execution of pyrocore utilities to manage torrents such as:  
+/home/nobody/bin/rtcontrol message='*Unregistered*torrent*' --yes --cron --cull  
 /home/nobody/bin/rtcontrol custom_1=radarr completed=+365d --yes --cron --cull
 
 **Usage via docker-compose**
@@ -20,7 +20,7 @@ You can create a crontab file located at /rtbase/crontab and it will be consumed
 ```
 services:
   rtorrent:
-    image: lethargy-navigator/rtorrent:latest
+    image: lethargynavigator/arch-rtorrentps:latest
     container_name: rtorrent
     volumes:
       - scgi:/scgi
